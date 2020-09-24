@@ -28,7 +28,7 @@ jobs:
 
       - name: Run tests
         run: |
-          docker build . --file Dockerfile
+          docker build . --file Dockerfile --build-arg WINDOWS_VERSION=1809
           # TODO: Rewrite in PowerShell
           # if [ -f docker-compose.test.yml ]; then
           #   docker-compose --file docker-compose.test.yml build
