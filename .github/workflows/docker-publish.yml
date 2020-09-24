@@ -51,7 +51,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $env:IMAGE_NAME --build-arg WINDOWS_VERSION=$env:WINDOWS_VERSION
+        run: |
+          docker build . --file Dockerfile --tag bdwyertech/${{ env.IMAGE_NAME }} --build-arg WINDOWS_VERSION=$env:WINDOWS_VERSION
 
       - name: DockerHub login
         uses: azure/docker-login@v1
