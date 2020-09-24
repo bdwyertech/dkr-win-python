@@ -53,15 +53,15 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag $env:IMAGE_NAME --build-arg WINDOWS_VERSION=$env:WINDOWS_VERSION
 
-      - name: Docker Hub login
+      - name: DockerHub login
         uses: azure/docker-login@v1
         with:
           username: bdwyertech
           password: ${{ secrets.DOCKERHUB_KEY }}
 
-      - name: Push image to GitHub Container Registry
+      - name: Push image to DockerHub
         run: |
-          docker push bdwyertech/$env:IMAGE_NAME:latest
+          docker push bdwyertech/${{ env.IMAGE_NAME }}:latest
 #          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 #
 #          # Change all uppercase to lowercase
